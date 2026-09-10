@@ -1,0 +1,272 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  font: inherit;
+}
+
+:root {
+  --ink: #17181a;
+  --muted: #666970;
+  --paper: #f5f3ed;
+  --surface: #fff;
+  --line: #d8d4ca;
+  --accent: #dfff57;
+  --focus: #135fc2;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.shell {
+  width: min(100% - 2rem, 68rem);
+  margin-inline: auto;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.5rem;
+  @media (width <= 40rem) {
+    & {
+      align-items: flex-start;
+      flex-direction: column;
+      padding-block: 1rem;
+    }
+  }
+}
+
+.brand {
+  font-weight: 900;
+  text-decoration: none;
+}
+
+:is(ul, ol)[class] {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.primary-navigation,
+.breadcrumbs {
+  > :where(ul, ol) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  a {
+    text-underline-offset: 0.2em;
+  }
+}
+
+.breadcrumbs {
+  border-block: 1px solid var(--line);
+  padding-block: 0.7rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  ol {
+    gap: 0;
+  }
+  li:has(+ li)::after {
+    content: "/";
+    margin-inline: 0.8rem;
+  }
+}
+
+.eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.button-like,
+.favourite {
+  border: 2px solid var(--ink);
+  background: var(--btn-bg, var(--surface));
+  color: var(--ink);
+  cursor: pointer;
+  &:hover {
+    --btn-bg: var(--accent);
+  }
+}
+
+.button-like {
+  display: inline flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.45rem;
+  padding: 0.55rem 0.8rem;
+  font-weight: 800;
+}
+
+.products-section {
+  padding-block: clamp(3rem, 7vw, 5rem);
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-block-end: 1.2rem;
+  h2 {
+    margin-block-start: 0.25rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+  }
+  > p {
+    color: var(--muted);
+  }
+}
+
+.product-list {
+  display: grid;
+  gap: 1rem;
+  @media (width > 40rem) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.product-card {
+  overflow: clip;
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+  background: var(--surface);
+
+  display: grid;
+  grid-template-areas:
+    "image"
+    "info";
+}
+
+.media {
+  grid-area: image;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: clip;
+  background: #dedbd2;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.favourite {
+  grid-area: image;
+  z-index: 1;
+  margin: 0.7rem;
+  place-self: start end;
+  display: grid;
+  place-items: center;
+  width: 2.8rem;
+  aspect-ratio: 1;
+  border-radius: 1e5px;
+  font-size: 1.25rem;
+  &[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--accent);
+  }
+}
+
+[aria-pressed] {
+  .heart-filled,
+  .heart-empty {
+    display: none;
+  }
+  &[aria-pressed="true"] .heart-filled,
+  &[aria-pressed="false"] .heart-empty {
+    display: block;
+  }
+}
+
+.product-content {
+  grid-area: info;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.product-content :is(h2, h3) {
+  font-size: 1.2rem;
+}
+
+.kind {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.price {
+  font-weight: 900;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
+/* Feedback er udleveret; opgaven handler om data og JavaScript. */
+.load-feedback {
+  margin-block: 1rem;
+}
+.card-feedback {
+  grid-area: feedback;
+  padding: 0 1rem 1rem;
+  min-height: 2.5lh;
+}
+.card-feedback:empty {
+  display: none;
+}
+.product-card {
+  grid-template-areas: "image" "info" "feedback";
+}
+.favourite[aria-disabled="true"] {
+  cursor: wait;
+  opacity: 0.6;
+}

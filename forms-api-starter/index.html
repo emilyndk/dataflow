@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Workshop — tilmeldinger</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="script.js"></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Tilmeld en workshop</h1>
+        <p>En øvelsesliste. Brug opdigtede navne og e-mailadresser.</p>
+      </header>
+      <div class="layout">
+        <section aria-labelledby="form-heading">
+          <h2 id="form-heading">Ny tilmelding</h2>
+          <p>Alle felter skal udfyldes.</p>
+          <form>
+            <div class="form-group">
+              <label for="firstname">Fornavn</label>
+              <input id="firstname" name="firstname" type="text" required autocomplete="given-name" aria-errormessage="firstname-error" />
+              <p class="error-message" id="firstname-error">
+                Skriv et fornavn.
+              </p>
+            </div>
+            <div class="form-group">
+              <label for="lastname">Efternavn</label>
+              <input id="lastname" name="lastname" type="text" required autocomplete="family-name" aria-errormessage="lastname-error" />
+              <p class="error-message" id="lastname-error">
+                Skriv et efternavn.
+              </p>
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <p id="email-hint">Brug fx alex@example.com i denne øvelse.</p>
+              <input id="email" name="email" type="email" required autocomplete="email" aria-errormessage="email-error" aria-describedby="email-hint" />
+              <p class="error-message" id="email-error">
+                Skriv en e-mailadresse, fx alex@example.com.
+              </p>
+            </div>
+            <button type="submit">Tilføj tilmelding</button>
+          </form>
+          <p id="form-status" role="status"></p>
+        </section>
+        <section aria-labelledby="entries-heading">
+          <h2 id="entries-heading">Gemte tilmeldinger</h2>
+          <p id="list-status" role="status"></p>
+          <ul class="entries" tabindex="-1" aria-labelledby="entries-heading"></ul>
+        </section>
+      </div>
+    </main>
+    <template id="entry-template">
+      <li class="entry">
+        <h3 class="entry-name"></h3>
+        <p class="entry-email"></p>
+        <button class="delete-entry" type="button">Slet tilmelding</button>
+        <p class="entry-feedback" role="status"></p>
+      </li>
+    </template>
+  </body>
+</html>

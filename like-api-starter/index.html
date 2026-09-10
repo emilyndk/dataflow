@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Favoritter fra et API | SOLE OBJECTS</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" type="module"></script>
+  </head>
+  <body>
+    <header class="site-header shell">
+      <a class="brand" href="./">SOLE OBJECTS</a>
+      <p>Fra tilgængelig knap til gemt favorit</p>
+    </header>
+
+    <main class="shell">
+      <h1 class="visually-hidden">Sneakers</h1>
+      <section class="products-section" aria-labelledby="popular-title">
+        <div class="section-heading">
+          <h2 id="popular-title">Populære lige nu</h2>
+          <p id="product-count">1 produkt</p>
+        </div>
+        <p class="load-feedback" id="load-status" role="status"></p>
+        <!-- TODO 1: Flyt li-elementet til en template efter main. Bevar denne ul. -->
+        <ul class="product-list">
+          <li>
+            <article class="product-card">
+              <div class="media"><img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Nike Zoom Vomero 5" /></div>
+              <div class="product-content">
+                <div>
+                  <h3 class="product-name">Nike Zoom Vomero 5</h3>
+                  <p class="kind">Lifestyle · 6 farver</p>
+                </div>
+                <p class="price">1.299 kr.</p>
+              </div>
+              <button class="favourite" type="button"
+                aria-label="Favorite: Nike Zoom Vomero 5" aria-pressed="false">
+                <svg
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                >
+                  <path
+                    class="heart-empty"
+                    d="M11.288 20.2q-.363-.125-.638-.4l-1.725-1.575q-2.65-2.425-4.787-4.812T2 8.15Q2 5.8 3.575 4.225T7.5 2.65q1.325 0 2.5.562t2 1.538q.825-.975 2-1.537t2.5-.563q2.35 0 3.925 1.575T22 8.15q0 2.875-2.125 5.275T15.05 18.25l-1.7 1.55q-.275.275-.637.4t-.713.125t-.712-.125M11.05 6.75q-.725-1.025-1.55-1.562t-2-.538q-1.5 0-2.5 1t-1 2.5q0 1.3.925 2.763t2.213 2.837t2.65 2.575T12 18.3q.85-.775 2.213-1.975t2.65-2.575t2.212-2.837T20 8.15q0-1.5-1-2.5t-2.5-1q-1.175 0-2 .538T12.95 6.75q-.175.25-.425.375T12 7.25t-.525-.125t-.425-.375m.95 4.725"
+                  />
+                  <path
+                    class="heart-filled"
+                    d="M11.288 20.2q-.363-.125-.638-.4l-1.725-1.575q-2.65-2.425-4.787-4.812T2 8.15Q2 5.8 3.575 4.225T7.5 2.65q1.325 0 2.5.562t2 1.538q.825-.975 2-1.537t2.5-.563q2.35 0 3.925 1.575T22 8.15q0 2.875-2.125 5.275T15.05 18.25l-1.7 1.55q-.275.275-.637.4t-.713.125t-.712-.125"
+                  />
+                </svg>
+              </button>
+              <p class="card-feedback" role="status"></p>
+            </article>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <!-- TODO 1: Opret template med id="product-card-template" her. -->
+  </body>
+</html>

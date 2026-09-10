@@ -1,0 +1,144 @@
+/* Udleveret basis. CSS er kun en lille del af opgaven. */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font:
+    1rem/1.5 system-ui,
+    sans-serif;
+  color: #202b32;
+  background: #f4f5f1;
+}
+main {
+  max-width: 70rem;
+  margin-inline: auto;
+  padding: 2rem 1rem;
+}
+header {
+  margin-block-end: 2rem;
+}
+h1,
+h2,
+h3,
+p {
+  margin-block: 0 0.75rem;
+}
+h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.15;
+}
+.layout {
+  display: grid;
+  gap: 2rem;
+  align-items: start;
+}
+section {
+  padding: 1.5rem;
+  border: 1px solid #c6cfca;
+  border-radius: 0.5rem;
+  background: white;
+  min-width: 0;
+}
+form,
+.form-group {
+  display: grid;
+  gap: 0.4rem;
+}
+form {
+  gap: 1.25rem;
+}
+label {
+  font-weight: 650;
+}
+input,
+button {
+  font: inherit;
+}
+input {
+  width: 100%;
+  min-width: 0;
+  padding: 0.65rem;
+  border: 1px solid #687a72;
+  border-radius: 0.25rem;
+}
+button {
+  padding: 0.65rem 1rem;
+  background: #244f43;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+button:disabled,
+button[aria-disabled="true"] {
+  opacity: 0.65;
+  cursor: wait;
+}
+:focus-visible {
+  outline: 3px solid #175ccb;
+  outline-offset: 3px;
+}
+.entries {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  &:empty {
+    display: none;
+  }
+}
+.entry {
+  padding: 1rem;
+  background: #f4f5f1;
+  border: 1px solid #c6cfca;
+  border-radius: 0.25rem;
+  overflow-wrap: anywhere;
+}
+.entry button {
+  background: white;
+  color: #872525;
+  border-color: currentColor;
+}
+.error-message {
+  color: #a21919;
+}
+.error-message {
+  display: none;
+}
+/* TODO 1: Vis .error-message ved :user-invalid eller aria-invalid="true".
+   Tilføj også en tydelig kant på det ugyldige input. Bevar fokusmarkeringen. */
+[role="status"] {
+  margin-block-start: 0.75rem;
+}
+[hidden] {
+  display: none !important;
+}
+@media (min-width: 48rem) {
+  .layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Udleveret pynt: kun listen krydsfader; formularen bliver stående. */
+:root {
+  view-transition-name: none;
+}
+
+.entries {
+  view-transition-name: entries;
+}
+::view-transition-old(entries),
+::view-transition-new(entries) {
+  animation-duration: 180ms;
+}
+::view-transition {
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none;
+  }
+}
