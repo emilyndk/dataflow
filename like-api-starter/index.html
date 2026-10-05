@@ -14,6 +14,9 @@
     </header>
 
     <main class="shell">
+
+      
+
       <h1 class="visually-hidden">Sneakers</h1>
       <section class="products-section" aria-labelledby="popular-title">
         <div class="section-heading">
@@ -23,7 +26,15 @@
         <p class="load-feedback" id="load-status" role="status"></p>
         <!-- TODO 1: Flyt li-elementet til en template efter main. Bevar denne ul. -->
         <ul class="product-list">
-          <li>
+          
+        </ul>
+      </section>
+    </main>
+
+    <!-- TODO 1: Opret template med id="product-card-template" her. -->
+
+<template id="product-card-template">
+        <li>
             <article class="product-card">
               <div class="media"><img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Nike Zoom Vomero 5" /></div>
               <div class="product-content">
@@ -56,10 +67,7 @@
               <p class="card-feedback" role="status"></p>
             </article>
           </li>
-        </ul>
-      </section>
-    </main>
+      </template>
 
-    <!-- TODO 1: Opret template med id="product-card-template" her. -->
   </body>
 </html>
